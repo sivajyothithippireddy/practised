@@ -1,0 +1,40 @@
+
+<div class="mx-auto  col-3 m-3"  >
+  <input type="text" class="form-control col-6" [(ngModel)]="data">
+</div>
+<div class="mx-auto col-7">
+<ag-grid-angular
+    style="width: 950px; height: 600px;"
+    class="ag-theme-balham"
+    [rowData]="rowData | search : data"  (rowClicked)="modalData($event)" data-toggle="modal" data-target="#myModal"
+    [columnDefs]="columnDefs"
+    rowSelection="multiple"
+    >
+</ag-grid-angular>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+      <pre>{{modalDetails|json}}</pre> 
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
